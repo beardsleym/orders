@@ -39,7 +39,6 @@ function App() {
                         Error: {JSON.stringify(error)}
                     </span>
                 )}
-                {loading && <Loader />}
                 {/* <Select
                     className="w-28 "
                     placeholder="Your name"
@@ -120,6 +119,13 @@ function App() {
                 </div>
             </div>
             {/* Content */}
+            {loading && (
+                <div className="flex h-screen items-center justify-center">
+                    <div className="mb-36">
+                        <Loader />
+                    </div>
+                </div>
+            )}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {value && (
                     <>
