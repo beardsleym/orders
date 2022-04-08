@@ -68,7 +68,7 @@ const OrderCard = ({
         </Card.Section>
         {/* CARD CONTENT */}
         <div className="pt-4">
-          <div className="flex justify-between">
+          <div className="flex flex-wrap justify-between gap-2">
             <Badge color="dark" variant="light">
               {type}
             </Badge>
