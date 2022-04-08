@@ -43,7 +43,7 @@ const OrderCard = ({
   created,
   updated,
 }) => {
-  const imageSrc = `${unsplashBaseUrl}${text || type}&${Math.random()}`;
+  const imageSrc = `${unsplashBaseUrl}${type}&${Math.random()}`;
 
   return (
     <div className="w-full relative">
