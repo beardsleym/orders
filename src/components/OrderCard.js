@@ -5,7 +5,8 @@ import * as dayjs from "dayjs";
 import * as relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 
-const unsplashBaseUrl = "https://source.unsplash.com/random/600x400/?";
+const unsplashBaseUrl =
+  "https://source.unsplash.com/600x400?sig=incrementingIdentifier&";
 
 const handleComplete = async (id, status) => {
   const orderRef = doc(db, "orders", id);
@@ -16,7 +17,6 @@ const handleComplete = async (id, status) => {
 };
 
 const momentFromNow = (timestamp) => {
-  dayjs.extend(relativeTime);
   if (timestamp) {
     return dayjs().to(timestamp.toDate());
   } else {
@@ -43,7 +43,7 @@ const OrderCard = ({
   created,
   updated,
 }) => {
-  const imageSrc = `${unsplashBaseUrl}${type}&${Math.random()}`;
+  const imageSrc = `${unsplashBaseUrl}${type}`;
 
   return (
     <div className="w-full relative">
@@ -53,7 +53,7 @@ const OrderCard = ({
           color="dark"
           variant="light"
         >
-          completed {momentFromNow(updated)}
+          completed {dayjs().to(updated.toDate())}
         </Badge>
       )}
       <Card
