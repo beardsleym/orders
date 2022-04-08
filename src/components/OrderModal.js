@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { Modal, Button, Group, Textarea, Select } from "@mantine/core";
-import { db } from "../firebaseConfig";
-import { addDoc, collection, Timestamp } from "firebase/firestore";
+import {useState} from "react";
+import {Modal, Button, Group, Textarea, Select} from "@mantine/core";
+import {db} from "../firebaseConfig";
+import {addDoc, collection, Timestamp} from "firebase/firestore";
 
-function OrderModal({ name }) {
+function OrderModal({name}) {
   const [opened, setOpened] = useState(false);
   const [type, setType] = useState("");
   const [text, setText] = useState("");
@@ -39,15 +39,15 @@ function OrderModal({ name }) {
           value={type}
           onChange={setType}
           data={[
-            { value: "hot drink", label: "☕ Hot Drink" },
-            { value: "cold drink", label: "🥤 Cold Drink" },
-            { value: "food", label: "🍔 Food" },
-            { value: "medicine", label: "💊 Medicine" },
-            { value: "toilet paper", label: "🧻 Toilet Paper" },
-            { value: "entertainment", label: "📺 Entertainment" },
-            { value: "clothes", label: "👕 Clothes" },
-            { value: "hospital", label: "🏥 Hospital" },
-            { value: "other", label: "Other" },
+            {value: "hot drink", label: "☕ Hot Drink"},
+            {value: "cold drink", label: "🥤 Cold Drink"},
+            {value: "food", label: "🍔 Food"},
+            {value: "medicine", label: "💊 Medicine"},
+            {value: "toilet paper", label: "🧻 Toilet Paper"},
+            {value: "entertainment", label: "📺 Entertainment"},
+            {value: "clothes", label: "👕 Clothes"},
+            {value: "hospital", label: "🏥 Hospital"},
+            {value: "other", label: "Other"},
           ]}
         />
         <Textarea

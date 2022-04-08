@@ -8,15 +8,15 @@ const axios = require("axios");
 
 // When new order created - cloud functions
 exports.ordersOnCreate = functions.firestore
-    .document("orders/{id}")
-    .onCreate((snap, context) => {
-        const order = snap.data();
-        log.log({order});
-        // Send slack message
-        axios.post(
-            `https://hooks.slack.com/services/${process.env.SLACK_HOOK}`,
-            JSON.stringify({
-                text: `✨ \`${order.type}\` order from ${order.name} \n ${order.text} \n https://orders-pit.pages.dev`,
-            })
-        );
-    });
+  .document("orders/{id}")
+  .onCreate((snap, context) => {
+    const order = snap.data();
+    log.log({order});
+    // Send slack message
+    axios.post(
+      `https://hooks.slack.com/services/${process.env.SLACK_HOOK}`,
+      JSON.stringify({
+        text: `✨ \`${order.type}\` order from ${order.name} \n ${order.text} \n https://orders-pit.pages.dev`,
+      })
+    );
+  });
