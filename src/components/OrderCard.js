@@ -49,6 +49,11 @@ const OrderCard = ({
     }, 60000);
   });
 
+  useEffect(() => {
+    setTimeUpdated(dayjs().to(updated.toDate()));
+    setTimeCreated(dayjs().to(created.toDate()));
+  }, [complete, created, updated]);
+
   return (
     <div className="w-full relative">
       {complete && (
