@@ -23,7 +23,7 @@ function App() {
         {loading && <Loader />}
 
         <Select
-          className="flex-none"
+          className="w-28"
           placeholder="Your name"
           value={name}
           onChange={setName}
