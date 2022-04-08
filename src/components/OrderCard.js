@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Card, Image, Text, Badge, Button } from "@mantine/core";
 import { doc, updateDoc, Timestamp } from "firebase/firestore";
 import { db } from "../firebaseConfig";
@@ -14,14 +15,6 @@ const handleComplete = async (id, status) => {
     complete: status,
     updated: Timestamp.now(),
   });
-};
-
-const momentFromNow = (timestamp) => {
-  if (timestamp) {
-    return dayjs().to(timestamp.toDate());
-  } else {
-    return "";
-  }
 };
 
 const badgeColors = {
@@ -45,6 +38,17 @@ const OrderCard = ({
 }) => {
   const imageSrc = `${unsplashBaseUrl}${type}`;
 
+  // Relative time
+  const [timeUpdated, setTimeUpdated] = useState(dayjs().to(updated.toDate()));
+  const [timeCreated, setTimeCreated] = useState(dayjs().to(created.toDate()));
+  // Update relative time every minute
+  useEffect(() => {
+    setInterval(() => {
+      setTimeUpdated(dayjs().to(updated.toDate()));
+      setTimeCreated(dayjs().to(created.toDate()));
+    }, 60000);
+  });
+
   return (
     <div className="w-full relative">
       {complete && (
@@ -53,7 +57,7 @@ const OrderCard = ({
           color="dark"
           variant="light"
         >
-          completed {dayjs().to(updated.toDate())}
+          completed {timeUpdated}
         </Badge>
       )}
       <Card
@@ -77,7 +81,7 @@ const OrderCard = ({
             </Badge>
 
             <Badge color="gray" variant="light">
-              {momentFromNow(created)}
+              {timeCreated}
             </Badge>
           </div>
 
