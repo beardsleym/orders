@@ -64,7 +64,7 @@ const OrderCard = ({
         }
       >
         <Card.Section>
-          <Image src={imageSrc} alt={type} />
+          <Image src={imageSrc} alt={type} height={200} width={600} />
         </Card.Section>
         {/* CARD CONTENT */}
         <div className="pt-4">
