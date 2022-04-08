@@ -1,13 +1,4 @@
-import {
-  Card,
-  Image,
-  Text,
-  Badge,
-  Button,
-  Group,
-  AspectRatio,
-  useMantineTheme,
-} from "@mantine/core";
+import { Card, Image, Text, Badge, Button } from "@mantine/core";
 import { doc, updateDoc, Timestamp } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import * as dayjs from "dayjs";
@@ -52,26 +43,27 @@ const OrderCard = ({
   created,
   updated,
 }) => {
-  const theme = useMantineTheme();
   const imageSrc = `${unsplashBaseUrl}${text || type}&${Math.random()}`;
 
   return (
-    <div className="w-full">
+    <div className="w-full relative">
+      {complete && (
+        <Badge
+          className="top-4 right-4 absolute z-10"
+          color="green"
+          variant="light"
+        >
+          completed {momentFromNow(updated)}
+        </Badge>
+      )}
       <Card
         shadow="sm"
         p="lg"
-        className={complete ? "bg-slate-700 opacity-30" : "bg-slate-700"}
+        className={
+          complete ? "bg-slate-700 opacity-30 h-full" : "bg-slate-700 h-full"
+        }
       >
         <Card.Section>
-          {complete && (
-            <Badge
-              className="top-4 right-4 absolute z-10"
-              color="green"
-              variant="light"
-            >
-              complete
-            </Badge>
-          )}
           <Image src={imageSrc} alt={type} />
         </Card.Section>
         {/* CARD CONTENT */}
@@ -89,7 +81,7 @@ const OrderCard = ({
             </Badge>
           </div>
 
-          <Text size="md" className="text-white mt-2 font-weight-normal">
+          <Text size="md" className="text-white mt-2 font-semibold">
             {text}
           </Text>
           {userName === "isaac" && (
