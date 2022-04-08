@@ -14,9 +14,8 @@ function App() {
   );
   const [value, loading, error] = useCollection(q);
   const [name, setName] = useState(null);
-  console.log(value, loading, error);
   return (
-    <div className="h-full bg-slate-900 p-4">
+    <div className=" h-full min-h-screen bg-slate-900 p-4">
       <div className="flex justify-between items-center">
         <OrderModal name={name} />
 
@@ -39,7 +38,7 @@ function App() {
         />
       </div>
       {/* Content */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {value && (
           <>
             {value.docs.map((doc) => (

@@ -5,6 +5,7 @@ import {
   Badge,
   Button,
   Group,
+  AspectRatio,
   useMantineTheme,
 } from "@mantine/core";
 import { doc, updateDoc, Timestamp } from "firebase/firestore";
@@ -56,43 +57,56 @@ const OrderCard = ({
 
   return (
     <div className="w-full">
-      <Card shadow="sm" p="lg" className="bg-slate-700">
+      <Card
+        shadow="sm"
+        p="lg"
+        className={complete ? "bg-slate-700 opacity-30" : "bg-slate-700"}
+      >
         <Card.Section>
-          <Image src={imageSrc} height={160} alt={type} />
-        </Card.Section>
-
-        <Group
-          position="apart"
-          style={{ marginBottom: 5, marginTop: theme.spacing.sm }}
-        >
-          <Badge color={badgeColors[name]} variant="light">
-            {name}
-          </Badge>
-          <Badge color="gray" variant="light">
-            {type}
-          </Badge>
-          <Badge color="dark" variant="light">
-            {momentFromNow(created)}
-          </Badge>
-        </Group>
-
-        <Text size="md" className="text-white mt-2 font-weight-normal">
-          {text}
-        </Text>
-        {userName === "isaac" && (
-          <Button
-            className={
+          {complete && (
+            <Badge
+              className="top-4 right-4 absolute z-10"
+              color="green"
+              variant="light"
+            >
               complete
-                ? "bg-gray-400 hover:bg-gray-500 mt-4 text-white w-full"
-                : "bg-blue-400 hover:bg-blue-500 mt-4 text-white w-full"
-            }
-            onClick={() => {
-              handleComplete(id, !complete);
-            }}
-          >
-            {complete ? "Completed: ↩️ Undo?" : "Mark as complete"}
-          </Button>
-        )}
+            </Badge>
+          )}
+          <Image src={imageSrc} alt={type} />
+        </Card.Section>
+        {/* CARD CONTENT */}
+        <div className="pt-4">
+          <div className="flex justify-between">
+            <Badge color="dark" variant="light">
+              {type}
+            </Badge>
+            <Badge color={badgeColors[name]} variant="light">
+              {name}
+            </Badge>
+
+            <Badge color="dark" variant="light">
+              {momentFromNow(created)}
+            </Badge>
+          </div>
+
+          <Text size="md" className="text-white mt-2 font-weight-normal">
+            {text}
+          </Text>
+          {userName === "isaac" && (
+            <Button
+              className={
+                complete
+                  ? "bg-gray-400 hover:bg-gray-500 mt-4 text-white w-full"
+                  : "bg-blue-400 hover:bg-blue-500 mt-4 text-white w-full"
+              }
+              onClick={() => {
+                handleComplete(id, !complete);
+              }}
+            >
+              {complete ? "Completed: ↩️ Undo?" : "Mark as complete"}
+            </Button>
+          )}
+        </div>
       </Card>
     </div>
   );
