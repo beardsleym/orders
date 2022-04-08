@@ -84,7 +84,7 @@ const OrderCard = ({
           <Text size="md" className="text-white mt-2 font-semibold">
             {text}
           </Text>
-          {userName === "isaac" && (
+          {(userName === name || userName === "isaac") && (
             <Button
               className={
                 complete
