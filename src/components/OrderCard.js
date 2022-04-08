@@ -49,8 +49,8 @@ const OrderCard = ({
     <div className="w-full relative">
       {complete && (
         <Badge
-          className="top-4 right-4 absolute z-10"
-          color="green"
+          className="top-4 right-4 absolute opacity-50 z-10"
+          color="dark"
           variant="light"
         >
           completed {momentFromNow(updated)}
@@ -76,7 +76,7 @@ const OrderCard = ({
               {name}
             </Badge>
 
-            <Badge color="dark" variant="light">
+            <Badge color="gray" variant="light">
               {momentFromNow(created)}
             </Badge>
           </div>
