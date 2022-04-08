@@ -53,7 +53,7 @@ const OrderCard = ({
   updated,
 }) => {
   const theme = useMantineTheme();
-  const imageSrc = `${unsplashBaseUrl}${text | type}&${Math.random()}`;
+  const imageSrc = `${unsplashBaseUrl}${text || type}&${Math.random()}`;
 
   return (
     <div className="w-full">
