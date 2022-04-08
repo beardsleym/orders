@@ -16,12 +16,11 @@ function App() {
   const [name, setName] = useState(null);
   return (
     <div className=" h-full min-h-screen bg-slate-900 p-4">
-      <div className="flex justify-between items-center">
-        <OrderModal name={name} />
+      <div className="flex justify-between items-center mb-4">
+        {name && <OrderModal name={name} />}
 
         {error && <strong>Error: {JSON.stringify(error)}</strong>}
         {loading && <Loader />}
-
         <Select
           className="w-28"
           placeholder="Your name"

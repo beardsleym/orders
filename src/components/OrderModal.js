@@ -61,12 +61,8 @@ function OrderModal({ name }) {
       </Modal>
 
       <Group position="center">
-        <Button
-          disabled={!name}
-          className="bg-pink-500 my-3"
-          onClick={() => setOpened(true)}
-        >
-          {!name ? "Select name ➡️" : "😷 New Order"}
+        <Button className="bg-pink-500 my-3" onClick={() => setOpened(true)}>
+          😷 New Order
         </Button>
       </Group>
     </>
