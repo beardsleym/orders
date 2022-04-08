@@ -23,10 +23,14 @@ function App() {
             <div className="flex justify-between items-center mb-4">
                 {name && <OrderModal name={name} />}
 
-                {error && <strong>Error: {JSON.stringify(error)}</strong>}
+                {error && (
+                    <span className="text-white">
+                        Error: {JSON.stringify(error)}
+                    </span>
+                )}
                 {loading && <Loader />}
                 <Select
-                    className="w-28"
+                    className="w-28 bg-slate-700 text-white"
                     placeholder="Your name"
                     value={name}
                     onChange={setName}

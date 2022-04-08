@@ -10,7 +10,12 @@ const firebaseConfig = {
     messagingSenderId: "316608889773",
     appId: "1:316608889773:web:2f1f7e0e19cd64a1b05724",
 };
+if (process.env.NODE_ENV === "development") {
+    // eslint-disable-next-line no-restricted-globals
+    self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+}
 
+console.log(process.env);
 const app = initializeApp(firebaseConfig);
 
 initializeAppCheck(app, {
