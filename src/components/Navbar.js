@@ -2,15 +2,7 @@ import {Fragment} from "react";
 import OrderModal from "./OrderModal";
 import {Listbox, Transition} from "@headlessui/react";
 import {CheckIcon, SelectorIcon} from "@heroicons/react/outline";
-
-const people = [
-  {value: "cannelle", label: "Cannelle"},
-  {value: "isaac", label: "Isaac"},
-  {value: "matt", label: "Matt"},
-  {value: "olivia", label: "Olivia"},
-  {value: "robyn", label: "Robyn"},
-  {value: "roger", label: "Roger"},
-];
+import {users} from "../constants/users";
 
 const Navbar = ({name, setName}) => {
   return (
@@ -38,7 +30,7 @@ const Navbar = ({name, setName}) => {
               leaveTo="opacity-0"
             >
               <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                {people.map((person, personIdx) => (
+                {users.map((person, personIdx) => (
                   <Listbox.Option
                     key={personIdx}
                     className={({active}) =>
