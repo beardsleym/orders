@@ -1,7 +1,8 @@
 import {useLocalStorage} from "@mantine/hooks";
+import {NotificationsProvider} from "@mantine/notifications";
+
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import {NotificationsProvider} from "@mantine/notifications";
 
 function App() {
   const [userName, setuserName] = useLocalStorage({
