@@ -31,7 +31,7 @@ const OrderCard = ({
   created,
   updated,
 }) => {
-  const imageSrc = `${unsplashBaseUrl}${type}`;
+  const imageSrc = `${unsplashBaseUrl}${encodeURI(text ? text : type)}`;
 
   // Relative time
   const [timeUpdated, setTimeUpdated] = useState(dayjs().to(updated.toDate()));
@@ -79,11 +79,9 @@ const OrderCard = ({
             <Badge color="dark" variant="light">
               {type}
             </Badge>
-            {/* <Badge color={badgeColors[name]} variant="light"> */}
             <Badge color={color} variant="light">
               {name}
             </Badge>
-
             <Badge color="gray" variant="light">
               {timeCreated}
             </Badge>
