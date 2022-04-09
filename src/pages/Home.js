@@ -1,19 +1,24 @@
-import {useCollection} from "react-firebase-hooks/firestore";
-import {db} from "../services/firebaseConfig";
 import {collection, orderBy, query, limit} from "firebase/firestore";
-import OrderCard from "../components/OrderCard";
+import {useCollectionData} from "react-firebase-hooks/firestore";
+
+import {showNotification} from "@mantine/notifications";
 import {LoadingOverlay} from "@mantine/core";
 import {ExclamationCircleIcon} from "@heroicons/react/outline";
-import {showNotification} from "@mantine/notifications";
 
+import OrderCard from "../components/OrderCard";
+
+import {db} from "../services/firebaseConfig";
+import {orderDataConverter} from "../services/firestoreDataConverter";
+
+// Firestore query with converter for useCollectionData hook
 const Home = ({userName}) => {
   const q = query(
     collection(db, "orders"),
     orderBy("created", "desc"),
     limit(12)
-  );
+  ).withConverter(orderDataConverter);
   // Fetch data with listener from React-Firebase-Hooks
-  const [value, loading, error] = useCollection(q);
+  const [values, loading, error] = useCollectionData(q);
   // Show error notication from Mantine-Notifications
   if (error) {
     showNotification({
@@ -39,21 +44,23 @@ const Home = ({userName}) => {
       )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-        {value && (
+        {values && (
           <>
-            {value.docs.map((doc) => (
-              <OrderCard
-                key={doc.id}
-                id={doc.id}
-                userName={userName}
-                type={doc.data().type}
-                name={doc.data().name}
-                text={doc.data().text}
-                created={doc.data().created}
-                updated={doc.data().updated}
-                complete={doc.data().complete}
-              ></OrderCard>
-            ))}
+            {values.map(
+              ({id, type, name, text, created, updated, complete}) => (
+                <OrderCard
+                  key={id}
+                  id={id}
+                  userName={userName}
+                  type={type}
+                  name={name}
+                  text={text}
+                  created={created}
+                  updated={updated}
+                  complete={complete}
+                ></OrderCard>
+              )
+            )}
           </>
         )}
       </div>

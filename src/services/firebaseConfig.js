@@ -17,9 +17,7 @@ if (process.env.NODE_ENV === "development") {
   self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
 }
 
-console.log(process.env);
 const app = initializeApp(firebaseConfig);
-
 initializeAppCheck(app, {
   provider: new ReCaptchaV3Provider(process.env.REACT_APP_RECAPTCHA),
   isTokenAutoRefreshEnabled: true,

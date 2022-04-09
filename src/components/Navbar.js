@@ -1,8 +1,11 @@
 import {Fragment} from "react";
-import OrderModal from "./OrderModal";
+
 import {Listbox, Transition} from "@headlessui/react";
 import {CheckIcon, SelectorIcon} from "@heroicons/react/outline";
+
 import {users} from "../constants/users";
+
+import OrderModal from "./OrderModal";
 
 const Navbar = ({name, setName}) => {
   return (

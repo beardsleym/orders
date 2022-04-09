@@ -1,10 +1,12 @@
 import {useState, useEffect} from "react";
-import {Card, Image, Text, Badge, Button} from "@mantine/core";
 import {doc, updateDoc, Timestamp} from "firebase/firestore";
-import {db} from "../services/firebaseConfig";
+
 import * as dayjs from "dayjs";
 import * as relativeTime from "dayjs/plugin/relativeTime";
+import {Card, Image, Text, Badge, Button} from "@mantine/core";
+
 import {users} from "../constants/users";
+import {db} from "../services/firebaseConfig";
 
 dayjs.extend(relativeTime);
 
