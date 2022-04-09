@@ -1,8 +1,8 @@
 export const users = [
-  {value: "cannelle", label: "Cannelle"},
-  {value: "isaac", label: "Isaac"},
-  {value: "matt", label: "Matt"},
-  {value: "olivia", label: "Olivia"},
-  {value: "robyn", label: "Robyn"},
-  {value: "roger", label: "Roger"},
+  {value: "cannelle", label: "Cannelle", color: "yellow"},
+  {value: "isaac", label: "Isaac", color: "green"},
+  {value: "matt", label: "Matt", color: "blue"},
+  {value: "olivia", label: "Olivia", color: "pink"},
+  {value: "robyn", label: "Robyn", color: "red"},
+  {value: "roger", label: "Roger", color: "teal"},
 ];

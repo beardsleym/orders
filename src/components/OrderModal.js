@@ -2,6 +2,7 @@ import {useState} from "react";
 import {Modal, Button, Group, Textarea, Select} from "@mantine/core";
 import {db} from "../firebaseConfig";
 import {addDoc, collection, Timestamp} from "firebase/firestore";
+import {categories} from "../constants/categories";
 
 function OrderModal({name}) {
   const [opened, setOpened] = useState(false);
@@ -38,17 +39,7 @@ function OrderModal({name}) {
           placeholder="Pick one"
           value={type}
           onChange={setType}
-          data={[
-            {value: "hot drink", label: "☕ Hot Drink"},
-            {value: "cold drink", label: "🥤 Cold Drink"},
-            {value: "food", label: "🍔 Food"},
-            {value: "medicine", label: "💊 Medicine"},
-            {value: "toilet paper", label: "🧻 Toilet Paper"},
-            {value: "entertainment", label: "📺 Entertainment"},
-            {value: "clothes", label: "👕 Clothes"},
-            {value: "hospital", label: "🏥 Hospital"},
-            {value: "other", label: "Other"},
-          ]}
+          data={categories}
         />
         <Textarea
           label="Your order"

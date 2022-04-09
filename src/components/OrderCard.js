@@ -4,6 +4,7 @@ import {doc, updateDoc, Timestamp} from "firebase/firestore";
 import {db} from "../firebaseConfig";
 import * as dayjs from "dayjs";
 import * as relativeTime from "dayjs/plugin/relativeTime";
+import {users} from "../constants/users";
 
 dayjs.extend(relativeTime);
 
@@ -16,15 +17,6 @@ const handleComplete = async (id, status) => {
     complete: status,
     updated: Timestamp.now(),
   });
-};
-
-const badgeColors = {
-  robyn: "red",
-  matthew: "blue",
-  cannelle: "yellow",
-  roger: "teal",
-  olivia: "pink",
-  isaac: "green",
 };
 
 const OrderCard = ({
@@ -55,6 +47,9 @@ const OrderCard = ({
     setTimeCreated(dayjs().to(created.toDate()));
   }, [complete, created, updated]);
 
+  // Badge color
+  const {color} = users.find((user) => user.value === name);
+
   return (
     <div className="w-full relative">
       {complete && (
@@ -82,7 +77,8 @@ const OrderCard = ({
             <Badge color="dark" variant="light">
               {type}
             </Badge>
-            <Badge color={badgeColors[name]} variant="light">
+            {/* <Badge color={badgeColors[name]} variant="light"> */}
+            <Badge color={color} variant="light">
               {name}
             </Badge>
 
