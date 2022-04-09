@@ -4,12 +4,13 @@ import {getPerformance} from "firebase/performance";
 const {initializeAppCheck, ReCaptchaV3Provider} = require("firebase/app-check");
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBSzTIHXReb7pwdeuCnmFfx3347QPmcBSQ",
-  authDomain: "orders-9e335.firebaseapp.com",
-  projectId: "orders-9e335",
-  storageBucket: "orders-9e335.appspot.com",
-  messagingSenderId: "316608889773",
-  appId: "1:316608889773:web:2f1f7e0e19cd64a1b05724",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
 };
 if (process.env.NODE_ENV === "development") {
   // eslint-disable-next-line no-restricted-globals
