@@ -1,7 +1,7 @@
 import {useCollection} from "react-firebase-hooks/firestore";
-import {db} from "../firebaseConfig";
+import {db} from "../services/firebaseConfig";
 import {collection, orderBy, query, limit} from "firebase/firestore";
-import OrderCard from "./OrderCard";
+import OrderCard from "../components/OrderCard";
 import {LoadingOverlay} from "@mantine/core";
 import {ExclamationCircleIcon} from "@heroicons/react/outline";
 import {showNotification} from "@mantine/notifications";

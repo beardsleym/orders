@@ -1,6 +1,6 @@
 import {useLocalStorage} from "@mantine/hooks";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home";
+import Home from "./pages/Home";
 import {NotificationsProvider} from "@mantine/notifications";
 
 function App() {

@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {Modal, Button, Group, Textarea, Select} from "@mantine/core";
-import {db} from "../firebaseConfig";
+import {db} from "../services/firebaseConfig";
 import {addDoc, collection, Timestamp} from "firebase/firestore";
 import {categories} from "../constants/categories";
 

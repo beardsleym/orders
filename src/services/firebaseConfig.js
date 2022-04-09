@@ -21,7 +21,7 @@ console.log(process.env);
 const app = initializeApp(firebaseConfig);
 
 initializeAppCheck(app, {
-  provider: new ReCaptchaV3Provider("6LfzZ1gfAAAAAIy21ha17CWH8XSlWHUb9z63jCOy"),
+  provider: new ReCaptchaV3Provider(process.env.REACT_APP_RECAPTCHA),
   isTokenAutoRefreshEnabled: true,
 });
 getPerformance(app);
